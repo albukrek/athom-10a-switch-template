@@ -21,7 +21,7 @@ wifi:
   password: !secret wifi_password
   fast_connect: true
   ap:
-    ssid: "sonoff-basic-r1"
+    ssid: "athom-cb0110a"
     password: "AlbArik64"
   # WiFi connection events
   on_connect:
@@ -37,7 +37,7 @@ captive_portal:
 logger:
 
 
-# LED on GPIO13 (green), inverted on Sonoff Basic R1
+# LED on GPIO4 (green), inverted on Athom R1
 output:
   - platform: gpio
     pin:
@@ -48,16 +48,16 @@ output:
 light:
   - platform: binary
     id: status_light
-    name: "Sonoff Basic LED"
+    name: "Athom LED"
     output: led_output
     internal: true
     restore_mode: ALWAYS_OFF
 
-# Button on GPIO0
+# Button on GPIO3
 binary_sensor:
   - platform: gpio
     id: button
-    name: "Sonoff Basic Button"
+    name: "Athom Button"
     pin:
       number: GPIO3
       mode: INPUT_PULLUP
@@ -67,11 +67,11 @@ binary_sensor:
         - switch.toggle: relay
         - script.execute: update_led_state
 
-# Relay on GPIO12
+# Relay on GPIO13
 switch:
   - platform: gpio
     id: relay
-    name: "Sonoff Basic Relay"
+    name: "Athom Relay"
     pin: GPIO13
     restore_mode: RESTORE_DEFAULT_OFF
     on_turn_on:
@@ -84,7 +84,7 @@ switch:
 # Wi‑Fi signal sensor
 sensor:
   - platform: wifi_signal
-    name: "Sonoff Basic Wifi Signal dB"
+    name: "Athom Wifi Signal dB"
     id: wifi_signal_strength
     update_interval: 60s
 
@@ -92,7 +92,7 @@ sensor:
 text_sensor:
   - platform: wifi_info
     ip_address:
-      name: "Sonoff Basic IP Address"
+      name: "Athom IP Address"
 
 # Helper script to manage LED behavior
 script:
